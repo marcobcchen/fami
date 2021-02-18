@@ -882,7 +882,7 @@ main { overflow: hidden; }
 @media (min-width: 992px) { /* line 488, ../_sass/css/page/_index.scss */
   .statement .content .sub-title { padding-left: 3%; font-size: 32px; background-position: 1% 0; } }
 /* line 505, ../_sass/css/page/_index.scss */
-.statement .content .tips { font-size: 12px; font-weight: 600; line-height: 1; padding-left: 2%; margin-left: 8%; margin-bottom: 4%; position: relative; }
+.statement .content .tips { font-size: 12px; font-weight: 500; line-height: 1; padding-left: 2%; margin-left: 8%; margin-bottom: 4%; position: relative; }
 @media (min-width: 992px) { /* line 505, ../_sass/css/page/_index.scss */
   .statement .content .tips { font-size: 20px; padding-left: 1%; margin-left: 4%; margin-bottom: 1%; } }
 /* line 521, ../_sass/css/page/_index.scss */
