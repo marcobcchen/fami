@@ -14,6 +14,7 @@ var statementOpen = false;
 var bidOpen = false;
 var stepOpen = false;
 var extraOpen = false;
+var st;
 
 $(function(){
 	// $.html5Loader({
@@ -74,7 +75,7 @@ $(function(){
     }
 
     function onScroll(){
-        var st = $(window).scrollTop();
+        st = $(window).scrollTop();
         var scope = wh * 0.4;
 
         var introTop = $(".intro").offset().top - scope;
@@ -82,6 +83,8 @@ $(function(){
         var bidTop = $(".statement .bid").offset().top - scope;
         var stepTop = $(".step").offset().top - scope;
         var extraTop = $(".extra").offset().top - scope;
+
+        headerBG();
 
         if(st > introTop && !introOpen){
             introOpen = true;
@@ -136,6 +139,19 @@ $(function(){
         }
 
         toStep(size);
+        headerBG();
+    }
+
+    function headerBG(){
+        if(ww < 768){
+            TweenMax.to($('header'), 0.3, {backgroundColor: '#008cd6'});
+        }else{
+            if(st > 100){
+                TweenMax.to($('header'), 0.3, {backgroundColor: 'white'});
+            }else{
+                TweenMax.to($('header'), 0.3, {backgroundColor: 'transparent'});
+            }
+        }
     }
 
     function toStep(size){
