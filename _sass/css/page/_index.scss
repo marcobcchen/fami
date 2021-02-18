@@ -411,7 +411,7 @@
 	margin-top: -8%;
 	
 	.content{
-		background: url('/images/statement/bg_point.png'); 
+		background: url('../images/statement/bg_point.png'); 
 		background-size: cover;
 		background-color: #0bc7d2;
 		padding: 0 1%;
@@ -480,7 +480,7 @@
 			font-size: 16px;
 			font-weight: 600;
 			line-height: 1.3;
-			background: url(/images/statement/icon_title.png) no-repeat;
+			background: url(../images/statement/icon_title.png) no-repeat;
 			background-position:  3% 0;
 			background-size: auto 100%;
 
@@ -559,7 +559,7 @@
 				top: -40px;
 				width: 50px;
 				height: 40px;
-				background: url(/images/statement/icon_arrow.png) no-repeat;
+				background: url(../images/statement/icon_arrow.png) no-repeat;
 				background-size: cover;
 				@include translateX(-50%);
 			}
@@ -734,7 +734,7 @@
 	margin-top: -12%;
 
 	.content{
-		background: url('/images/step/bg_txt.png') no-repeat;
+		background: url('../images/step/bg_txt.png') no-repeat;
 		background-size: 18% auto; 
 		background-color: #e4f1fc;
 		padding-bottom: 20%;
@@ -836,7 +836,7 @@
 				top: -18px;
 				width: 100%;
 				height: 100%;
-				background: url(/images/extra/bg_dot.png);
+				background: url(../images/extra/bg_dot.png);
 				background-size: 10px auto;
 				z-index: 3;
 			}

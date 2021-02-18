@@ -850,7 +850,7 @@ main { overflow: hidden; }
 /* line 410, ../_sass/css/page/_index.scss */
 .statement { margin-top: -8%; }
 /* line 413, ../_sass/css/page/_index.scss */
-.statement .content { background: url("/images/statement/bg_point.png"); background-size: cover; background-color: #0bc7d2; padding: 0 1%; padding-bottom: 4%; }
+.statement .content { background: url("../images/statement/bg_point.png"); background-size: cover; background-color: #0bc7d2; padding: 0 1%; padding-bottom: 4%; }
 @media (min-width: 992px) { /* line 413, ../_sass/css/page/_index.scss */
   .statement .content { padding-bottom: 0%; } }
 /* line 424, ../_sass/css/page/_index.scss */
@@ -874,7 +874,7 @@ main { overflow: hidden; }
 @media (min-width: 992px) { /* line 450, ../_sass/css/page/_index.scss */
   .statement .content .info-con { -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; } }
 /* line 477, ../_sass/css/page/_index.scss */
-.statement .content .sub-title { margin-bottom: 1.5%; padding-left: 6%; font-size: 16px; font-weight: 600; line-height: 1.3; background: url(/images/statement/icon_title.png) no-repeat; background-position: 3% 0; background-size: auto 100%; }
+.statement .content .sub-title { margin-bottom: 1.5%; padding-left: 6%; font-size: 16px; font-weight: 600; line-height: 1.3; background: url(../images/statement/icon_title.png) no-repeat; background-position: 3% 0; background-size: auto 100%; }
 @media (min-width: 992px) { /* line 477, ../_sass/css/page/_index.scss */
   .statement .content .sub-title { padding-left: 3%; font-size: 32px; background-position: 1% 0; } }
 /* line 494, ../_sass/css/page/_index.scss */
@@ -896,7 +896,7 @@ main { overflow: hidden; }
 @media (min-width: 992px) { /* line 539, ../_sass/css/page/_index.scss */
   .statement .content .bid .bid-con { justify-content: center; padding: 6% 4%; -moz-border-radius: 200px; -webkit-border-radius: 200px; border-radius: 200px; } }
 /* line 554, ../_sass/css/page/_index.scss */
-.statement .content .bid::after { content: ''; display: block; position: absolute; left: 50%; top: -40px; width: 50px; height: 40px; background: url(/images/statement/icon_arrow.png) no-repeat; background-size: cover; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+.statement .content .bid::after { content: ''; display: block; position: absolute; left: 50%; top: -40px; width: 50px; height: 40px; background: url(../images/statement/icon_arrow.png) no-repeat; background-size: cover; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%); }
 /* line 567, ../_sass/css/page/_index.scss */
 .statement .content .bid .bid-des { color: white; font-size: 14px; font-weight: 400; margin-top: 6%; }
 @media (min-width: 992px) { /* line 567, ../_sass/css/page/_index.scss */
@@ -950,7 +950,7 @@ main { overflow: hidden; }
 /* line 733, ../_sass/css/page/_index.scss */
 .step { margin-top: -12%; }
 /* line 736, ../_sass/css/page/_index.scss */
-.step .content { background: url("/images/step/bg_txt.png") no-repeat; background-size: 18% auto; background-color: #e4f1fc; padding-bottom: 20%; padding-top: 8%; }
+.step .content { background: url("../images/step/bg_txt.png") no-repeat; background-size: 18% auto; background-color: #e4f1fc; padding-bottom: 20%; padding-top: 8%; }
 @media (min-width: 992px) { /* line 736, ../_sass/css/page/_index.scss */
   .step .content { background-size: 12% auto; } }
 /* line 747, ../_sass/css/page/_index.scss */
@@ -985,7 +985,7 @@ main { overflow: hidden; }
 /* line 828, ../_sass/css/page/_index.scss */
 .extra .content .content-con { position: relative; margin-top: -12%; padding: 4%; }
 /* line 833, ../_sass/css/page/_index.scss */
-.extra .content .content-con .bg-1 { position: absolute; left: 18px; top: -18px; width: 100%; height: 100%; background: url(/images/extra/bg_dot.png); background-size: 10px auto; z-index: 3; }
+.extra .content .content-con .bg-1 { position: absolute; left: 18px; top: -18px; width: 100%; height: 100%; background: url(../images/extra/bg_dot.png); background-size: 10px auto; z-index: 3; }
 /* line 843, ../_sass/css/page/_index.scss */
 .extra .content .content-con .bg-2 { position: absolute; left: 0%; top: 0%; width: 100%; height: 100%; background-color: white; -moz-border-radius: 20px; -webkit-border-radius: 20px; border-radius: 20px; z-index: 5; }
 /* line 854, ../_sass/css/page/_index.scss */
