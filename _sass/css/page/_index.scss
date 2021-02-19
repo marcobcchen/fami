@@ -396,6 +396,26 @@
 			.features-2, .features-3{
 				left: 105%;
 			}
+
+			.arrow-prev{
+				position: absolute;
+				left: 2%;
+				top: 50%;
+				width: 6%;
+				max-width: 30px;
+				z-index: 100;
+				cursor: pointer;
+			}
+
+			.arrow-next{
+				position: absolute;
+				right: 2%;
+				top: 50%;
+				width: 6%;
+				max-width: 30px;
+				z-index: 100;
+				cursor: pointer;
+			}
 		}
 
 		.md-features{
@@ -404,6 +424,7 @@
 			justify-content: flex-end;
 			align-items: flex-end;
 			min-height: auto;
+			position: relative;
 
 			@media (min-width: $media_sm) {
 				min-height: 150px;
@@ -413,6 +434,26 @@
 			}
 			@media (min-width: $media_lg) {
 				min-height: 300px;
+			}
+
+			.arrow-prev{
+				position: absolute;
+				left: 2%;
+				top: 50%;
+				width: 6%;
+				max-width: 30px;
+				z-index: 100;
+				cursor: pointer;
+			}
+
+			.arrow-next{
+				position: absolute;
+				right: 2%;
+				top: 50%;
+				width: 6%;
+				max-width: 30px;
+				z-index: 100;
+				cursor: pointer;
 			}
 		}
 	}
@@ -463,6 +504,24 @@
 			overflow: hidden;
 			border: 2px solid #3071d7;
 			@include border-radius(10px);
+
+			.arrow-prev{
+				position: absolute;
+				left: 2%;
+				top: 45%;
+				width: 6%;
+				max-width: 40px;
+				cursor: pointer;
+			}
+
+			.arrow-next{
+				position: absolute;
+				right: 2%;
+				top: 45%;
+				width: 6%;
+				max-width: 40px;
+				cursor: pointer;
+			}
 
 			.info{
 				position: relative;
@@ -579,6 +638,7 @@
 				color: white;
 				font-size: 14px;
 				font-weight: 400;
+				line-height: 30px;
 				margin-top: 6%;
 
 				@media (min-width: $media_md) {
@@ -588,6 +648,7 @@
 				.txt-big{
 					font-size: 20px;
 					font-weight: 900;
+					line-height: 30px;
 
 					@media (min-width: $media_md) {
 						font-size: 24px;
@@ -603,7 +664,7 @@
 			.btn-go{
 				position: absolute;
 				left: 50%;
-				bottom: 0;
+				bottom: 5px;
 				z-index: 30;
 				color: black;
 				font-size: 20px;
@@ -1021,6 +1082,7 @@
 	font-size: 12px;
 	letter-spacing: 0;
 	margin-top: 8%;
+	padding: 0 20px;
 }
 
 .btn-cfa{
@@ -1034,6 +1096,28 @@
 		right: 30px;
 		top: 80%;
 		width: 100px;
+	}
+
+	.hand{
+		position: absolute;
+		left: 0%;
+    top: 50%;
+		width: 60%;
+		animation: handMotion 1s infinite;
+		transform-origin: 90% 20%;
+	}
+
+	.txt{
+		position: absolute;
+		left: 22%;
+    top: 72%;
+    width: 63%;
+	}
+
+	@keyframes handMotion {
+		0%{@include transform(rotate(0))}
+		50%{@include transform(rotate(8deg))}
+		100%{@include transform(rotate(0))}
 	}
 }
 

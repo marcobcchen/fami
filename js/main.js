@@ -8,13 +8,19 @@ var isNavOpen = false;
 var isXs = false;
 var isSize = '';
 var speed = 0.3;
-var introID = 1;
+
 var introOpen = false;
 var statementOpen = false;
 var bidOpen = false;
 var stepOpen = false;
 var extraOpen = false;
 var st;
+
+var nowIntroId = 1;
+var introMdTimer, introXSTimer;
+
+var nowStatementId = 1;
+var statementTimer;
 
 $(function(){
 	// $.html5Loader({
@@ -60,6 +66,118 @@ $(function(){
             TweenMax.to($('.event-rule'), 0.6, {autoAlpha: 0});
             return false;
         });
+
+        $('.xs-features .arrow-prev').on('click', function(){
+            clearInterval(introXSTimer);
+
+            TweenMax.set($('.xs-features .features'), {left: "-105%", ease: Power3.easeOut});
+            TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "0%", ease: Power3.easeOut});
+            TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "105%", ease: Power3.easeOut});
+            
+            if(nowIntroId <= 1) {
+                nowIntroId = 3;
+            }else{
+                nowIntroId--;
+            }
+            
+            TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "-105%", ease: Power3.easeOut});
+            TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "0%", ease: Power3.easeOut});
+
+            $('.intro .dot').removeClass('active');
+            $('.intro .dot:nth-child('+ nowIntroId +')').addClass('active');
+
+            introXSTimer = setInterval(introXS, 2000);
+        });
+
+        $('.xs-features .arrow-next').on('click', function(){
+            clearInterval(introXSTimer);
+
+            TweenMax.set($('.xs-features .features'), {left: "-105%", ease: Power3.easeOut});
+            TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "0%", ease: Power3.easeOut});
+            TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "-105%", ease: Power3.easeOut});
+            
+            if(nowIntroId >= 3) {
+                nowIntroId = 1;
+            }else{
+                nowIntroId++;
+            }
+            
+            TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "105%", ease: Power3.easeOut});
+            TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "0%", ease: Power3.easeOut});
+
+            $('.intro .dot').removeClass('active');
+            $('.intro .dot:nth-child('+ nowIntroId +')').addClass('active');
+
+            introXSTimer = setInterval(introXS, 2000);
+        });
+
+        $('.md-features .arrow-prev').on('click', function(){
+            clearInterval(introMdTimer);
+            if(nowIntroId <= 1) {
+                nowIntroId = 3;
+            }else{
+                nowIntroId--;
+            }
+            introMDMotion(nowIntroId);
+
+            introMdTimer = setInterval(introMD, 2000);
+        });
+
+        $('.md-features .arrow-next').on('click', function(){
+            clearInterval(introMdTimer);
+            if(nowIntroId >= 3) {
+                nowIntroId = 1;
+            }else{
+                nowIntroId++;
+            }
+            introMDMotion(nowIntroId);
+
+            introMdTimer = setInterval(introMD, 2000);
+        });
+
+        $('.statement .arrow-prev').on('click', function(){
+            clearInterval(statementTimer);
+
+            TweenMax.set($('.statement .info-'+ nowStatementId), {left: "-100%", ease: Power3.easeOut});
+            TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "0%", ease: Power3.easeOut});
+            
+            if(nowStatementId <= 1) {
+                nowStatementId = 2;
+            }else{
+                nowStatementId--;
+            }
+            
+            TweenMax.set($('.statement .info-'+ nowStatementId), {left: "0%", ease: Power3.easeOut});
+            TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "100%", ease: Power3.easeOut});
+
+            $('.statement .dot').removeClass('active');
+            $('.statement .dot:nth-child('+ nowStatementId +')').addClass('active');
+
+            statementTimer = setInterval(statementMotion, 2000);
+        });
+
+        $('.statement .arrow-next').on('click', function(){
+            clearInterval(statementTimer);
+
+            TweenMax.set($('.statement .info-'+ nowStatementId), {left: "0%", ease: Power3.easeOut});
+            TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "-100%", ease: Power3.easeOut});
+            
+            if(nowStatementId >= 2) {
+                nowStatementId = 1;
+            }else{
+                nowStatementId++;
+            }
+            
+            TweenMax.set($('.statement .info-'+ nowStatementId), {left: "100%", ease: Power3.easeOut});
+            TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "0%", ease: Power3.easeOut});
+
+            $('.statement .dot').removeClass('active');
+            $('.statement .dot:nth-child('+ nowStatementId +')').addClass('active');
+
+            statementTimer = setInterval(statementMotion, 2000);
+        });
+
+        statementTimer = setInterval(statementMotion, 2000);
 
         TweenMax.set($('.intro .title-con'), {alpha: 0, y: 50});
         TweenMax.set($('.intro .xs-features'), {alpha: 0, y: 50});
@@ -159,16 +277,15 @@ $(function(){
         isSize = size;
 
         toReset();
-        resetIntroXS();
-        resetIntroMD();
         TweenMax.killAll();
 
         if(isXs) {
             TweenMax.set($('.step_1_1'), {alpha: 1});
 
             m_slide1();
-            onIntroXS_1();
-            onStatement_A();
+
+            clearInterval(introMdTimer);
+            introXSTimer = setInterval(introXS, 2000);
         }else{
             TweenMax.set($('.step_1_1'), {alpha: 1});
             TweenMax.set($('.step_2_1'), {alpha: 1});
@@ -178,8 +295,9 @@ $(function(){
             TweenMax.set($('.hightlight_1_3'), {scale: 0.3});
 
             slide1();
-            onIntroMD_1();
-            onStatement_A();
+
+            clearInterval(introXSTimer);
+            introMdTimer = setInterval(introMD, 2000);
         }
     }
 
@@ -277,91 +395,60 @@ $(function(){
         }
     }
 
-    function onIntroXS_1(){
-        introID = 1;
-        introDot();
-        TweenMax.set($('.xs-features .features-1'), {left: "0%", ease: Power3.easeOut});
-        TweenMax.set($('.xs-features .features-2'), {left: "105%", ease: Power3.easeOut});
-        TweenMax.to($('.xs-features .features-1'), 1, {left: "-105%", ease: Power3.easeOut, delay: 2});
-        TweenMax.to($('.xs-features .features-2'), 1, {left: "0%", ease: Power3.easeOut, delay: 2, onComplete: onIntroXS_2});
-    }
 
-    function onIntroXS_2(){
-        introID = 2;
-        introDot();
-        TweenMax.set($('.xs-features .features-2'), {left: "0%", ease: Power3.easeOut});
-        TweenMax.set($('.xs-features .features-3'), {left: "105%", ease: Power3.easeOut});
-        TweenMax.to($('.xs-features .features-2'), 1, {left: "-105%", ease: Power3.easeOut, delay: 2});
-        TweenMax.to($('.xs-features .features-3'), 1, {left: "0%", ease: Power3.easeOut, delay: 2, onComplete: onIntroXS_3});
-    }
+    function introXS(){
+        TweenMax.set($('.xs-features .features'), {left: "-105%", ease: Power3.easeOut});
+        TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "0%", ease: Power3.easeOut});
+        TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "-105%", ease: Power3.easeOut});
+        
+        if(nowIntroId >= 3) {
+            nowIntroId = 1;
+        }else{
+            nowIntroId++;
+        }
+        
+        TweenMax.set($('.xs-features .features-'+ nowIntroId), {left: "105%", ease: Power3.easeOut});
+        TweenMax.to($('.xs-features .features-'+ nowIntroId), 1, {left: "0%", ease: Power3.easeOut});
 
-    function onIntroXS_3(){
-        introID = 3;
-        introDot();
-        TweenMax.set($('.xs-features .features-3'), {left: "0%", ease: Power3.easeOut});
-        TweenMax.set($('.xs-features .features-1'), {left: "105%", ease: Power3.easeOut});
-        TweenMax.to($('.xs-features .features-3'), 1, {left: "-105%", ease: Power3.easeOut, delay: 2});
-        TweenMax.to($('.xs-features .features-1'), 1, {left: "0%", ease: Power3.easeOut, delay: 2, onComplete: onIntroXS_1});
-    }
-
-    function resetIntroXS(){
-        introID = 1;
-        introDot();
-        TweenMax.set($('.xs-features .features-1'), {left: "105%"});
-        TweenMax.set($('.xs-features .features-2'), {left: "105%"});
-        TweenMax.set($('.xs-features .features-3'), {left: "105%"});
-    }
-
-    function onIntroMD_1(){
-        console.log('md');
-        introID = 1;
-        TweenMax.to($('.md-features .features-3 .txt'), 1, {marginTop: "2%", ease: Power3.easeOut, delay: 2, onStart: introDot});
-        TweenMax.to($('.md-features .features-1 .txt'), 1, {marginTop: "8%", ease: Power3.easeOut, delay: 2, onComplete: onIntroMD_2});
-    }
-
-    function onIntroMD_2(){
-        introID = 2;
-        TweenMax.to($('.md-features .features-1 .txt'), 1, {marginTop: "2%", ease: Power3.easeOut, delay: 2, onStart: introDot});
-        TweenMax.to($('.md-features .features-2 .txt'), 1, {marginTop: "8%", ease: Power3.easeOut, delay: 2, onComplete: onIntroMD_3});
-    }
-
-    function onIntroMD_3(){
-        introID = 3 ;
-        TweenMax.to($('.md-features .features-2 .txt'), 1, {marginTop: "2%", ease: Power3.easeOut, delay: 2, onStart: introDot});
-        TweenMax.to($('.md-features .features-3 .txt'), 1, {marginTop: "8%", ease: Power3.easeOut, delay: 2, onComplete: onIntroMD_1});
-    }
-
-    function resetIntroMD(){
-        introID = 1;
-        introDot();
-        TweenMax.set($('.md-features .features-1 .txt'), {marginTop: "2%"});
-        TweenMax.set($('.md-features .features-2 .txt'), {marginTop: "2%"});
-        TweenMax.set($('.md-features .features-3 .txt'), {marginTop: "2%"});
-    }
-
-    function introDot(){
         $('.intro .dot').removeClass('active');
-        $('.intro .dot:nth-child('+introID+')').addClass('active');
+        $('.intro .dot:nth-child('+ nowIntroId +')').addClass('active');
     }
 
-    function onStatement_A(){
-        TweenMax.set($('.statement .info-2'), {left: "100%", ease: Power3.easeOut});
-        TweenMax.to($('.statement .info-1'), 1, {left: "-100%", ease: Power3.easeOut, delay: 2});
-        TweenMax.to($('.statement .info-2'), 1, {left: "0%", ease: Power3.easeOut, delay: 2, onComplete: onStatement_B});
-        $('.statement .dot').removeClass('active');
-        $('.statement .dot:nth-child(1)').addClass('active');
+    function introMD(){
+        if(nowIntroId >= 3) {
+            nowIntroId = 1;
+        }else{
+            nowIntroId++;
+        }
+        introMDMotion(nowIntroId);
+    }
 
-        // clock motion
+    function introMDMotion(id){
+        TweenMax.to($('.md-features .features .txt'), 1, {marginTop: "2%", ease: Power3.easeOut});
+        TweenMax.to($('.md-features .features-'+ id +' .txt'), 1, {marginTop: "8%", ease: Power3.easeOut});
+
+        $('.intro .dot').removeClass('active');
+        $('.intro .dot:nth-child('+ nowIntroId +')').addClass('active');
+    }
+
+    function statementMotion(){
+        TweenMax.set($('.statement .info-'+ nowStatementId), {left: "0%", ease: Power3.easeOut});
+        TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "-100%", ease: Power3.easeOut});
+        
+        if(nowStatementId >= 2) {
+            nowStatementId = 1;
+        }else{
+            nowStatementId++;
+        }
+        
+        TweenMax.set($('.statement .info-'+ nowStatementId), {left: "100%", ease: Power3.easeOut});
+        TweenMax.to($('.statement .info-'+ nowStatementId), 1, {left: "0%", ease: Power3.easeOut});
+
+        $('.statement .dot').removeClass('active');
+        $('.statement .dot:nth-child('+ nowStatementId +')').addClass('active');
+
         TweenMax.set($('.kv .clock-pointer'), {rotation: 0, ease: Power3.easeOut});
         TweenMax.to($('.kv .clock-pointer'), 1, {rotation: 360, ease: Power3.easeOut});
-    }
-
-    function onStatement_B(){
-        TweenMax.set($('.statement .info-1'), {left: "100%", ease: Power3.easeOut});
-        TweenMax.to($('.statement .info-2'), 1, {left: "-100%", ease: Power3.easeOut, delay: 2});
-        TweenMax.to($('.statement .info-1'), 1, {left: "0%", ease: Power3.easeOut, delay: 2, onComplete: onStatement_A});
-        $('.statement .dot').removeClass('active');
-        $('.statement .dot:nth-child(2)').addClass('active');
     }
 
     function toMenu(){
